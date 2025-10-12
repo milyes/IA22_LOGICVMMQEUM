@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>GEMINI CORE 2.6 PRO – Documentation Orbitronique</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body { font-family: Orbitron, sans-serif; background: #0b0b0b; color: #eee; padding: 2em; }
+    .badge { margin-top: 2em; }
+  </style>
+</head>
+<body>
+  <h1>🪐 GEMINI CORE 2.6 PRO</h1>
+  <p>Version scellée, validée, et publiée le <strong>2025-10-12</strong>.</p>
+
+  <h2>📄 Schéma Mermaid</h2>
+  <div class="mermaid">
+    graph TD
+      A[GEMINI CORE 2.6 PRO] --> B[create_zip.py]
+      B --> C[update_hash.py]
+      C --> D[METADATA.json]
+      D --> E[verify_core_v2.py]
+      E --> F[CI/CD SHA256]
+      F --> G[PDF institutionnel]
+      G --> H[index.html]
+  </div>
+
+  <h2>🔗 QR vers trace JSON</h2>
+  <img class="badge" src=".trace/GEMINI_CORE_2.6_PRO_badge_qr.svg" alt="Badge Orbitronique QR" width="720" />
+
+  <h2>📁 Artefacts</h2>
+  <ul>
+    <li><a href=".trace/GEMINI_CORE_2.6_PRO_trace_202510121455.json">Trace JSON</a></li>
+    <li><a href=".trace/GEMINI_CORE_2.6_PRO_badge.svg">Badge SVG</a></li>
+    <li><a href=".trace/GEMINI_CORE_2.6_PRO_badge.png">Badge PNG</a></li>
+    <li><a href="GEMINI_CORE_2.6_PRO_DOCS.pdf">PDF institutionnel</a></li>
+  </ul>
+</body>
+</html>
