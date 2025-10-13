@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>EMF DETECTOR :: CAMÉRA SPECTRALE</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      animation: pulse 2s infinite;
+    }
+
+    #emf-level {
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: #ff0040;
+    }
+
+    .gauge {
+      width: 300px;
+      height: 30px;
+      background: #222;
+      border: 2px solid #0f0;
+      margin: 0 auto 20px;
+    }
+
+    .bar {
+      height: 100%;
+      background: linear-gradient(to right, #0f0, #ff0040);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    #video {
+      width: 320px;
+      height: 240px;
+      border: 2px solid #ff0040;
+      margin: 20px auto;
+      display: block;
+    }
+
+    #log {
+      width: 80%;
+      margin: 0 auto;
+      text-align: left;
+      background: #111;
+      border: 1px solid #0f0;
+      padding: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 0.9em;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #0f0; }
+      50% { text-shadow: 0 0 20px #ff0040; }
+      100% { text-shadow: 0 0 5px #0f0; }
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧲 Détecteur EMF + Caméra Spectrale</h1>
+  <video id="video" autoplay></video>
+
+  <div id="emf-level">EMF = 0.00</div>
+  <div class="gauge">
+    <div class="bar" id="emf-bar"></div>
+  </div>
+
+  <div id="log">
+    <strong>Journal Spectral :</strong><br>
+  </div>
+
+  <div class="footer">
+    <p>Simulation orbitronique. Données non scientifiques.</p>
+    <p>© GEMINI CORE 2.6 PRO – Archive vivante</p>
+  </div>
+
+  <script>
+    // Accès à la caméra
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        document.getElementById('video').srcObject = stream;
+      })
+      .catch(err => {
+        document.getElementById('video').style.display = 'none';
+        console.error("Erreur caméra :", err);
+      });
+
+    // Simulation EMF + journal
+    function simulateEMF() {
+      const emfValue = (Math.random() * 100).toFixed(2);
+      const intensity = emfValue > 80 ? "🔴 Présence fantomatique détectée" :
+                        emfValue > 50 ? "🟠 Interférence orbitale" :
+                        emfValue > 20 ? "🟡 Pulsation faible" :
+                        "🟢 Silence spectral";
+
+      const timestamp = new Date().toLocaleTimeString();
+      const trace = `⧉ SHA256::${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+
+      document.getElementById('emf-level').textContent = `EMF = ${emfValue}`;
+      document.getElementById('emf-bar').style.width = `${emfValue}%`;
+
+      const logEntry = `<br>[${timestamp}] EMF = ${emfValue} → ${intensity} | ${trace}`;
+      document.getElementById('log').innerHTML += logEntry;
+
+      // Effet visuel rouge si fantôme détecté
+      if (emfValue > 80) {
+        document.body.style.backgroundColor = "#300";
+      } else {
+        document.body.style.backgroundColor = "#000";
+      }
+    }
+
+    setInterval(simulateEMF, 2000);
+  </script>
+
+</body>
+</html>
