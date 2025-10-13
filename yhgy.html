@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>EMF DETECTOR :: ORBITRONIQUE</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      font-size: 2em;
+      animation: pulse 2s infinite;
+    }
+
+    #emf-level {
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: #ff0040;
+    }
+
+    .gauge {
+      width: 300px;
+      height: 30px;
+      background: #222;
+      border: 2px solid #0f0;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .bar {
+      height: 100%;
+      background: linear-gradient(to right, #0f0, #ff0040);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #0f0; }
+      50% { text-shadow: 0 0 20px #ff0040; }
+      100% { text-shadow: 0 0 5px #0f0; }
+    }
+
+    #log {
+      width: 80%;
+      margin: 0 auto;
+      text-align: left;
+      background: #111;
+      border: 1px solid #0f0;
+      padding: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 0.9em;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧲 Détecteur EMF :: Pulsation Spectrale</h1>
+  <div id="emf-level">EMF = 0.00</div>
+
+  <div class="gauge">
+    <div class="bar" id="emf-bar"></div>
+  </div>
+
+  <div id="log">
+    <strong>Journal Spectral :</strong><br>
+  </div>
+
+  <div class="footer">
+    <p>Simulation orbitronique. Données non scientifiques.</p>
+    <p>© GEMINI CORE 2.6 PRO – Archive vivante</p>
+  </div>
+
+  <script>
+    function simulateEMF() {
+      const emfValue = (Math.random() * 100).toFixed(2);
+      const intensity = emfValue > 80 ? "⚠️ Haute interférence" :
+                        emfValue > 50 ? "🌐 Interférence modérée" :
+                        emfValue > 20 ? "🔅 Faible pulsation" :
+                        "🟢 Silence spectral";
+
+      const timestamp = new Date().toLocaleTimeString();
+      const trace = `⧉ SHA256::${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+
+      document.getElementById('emf-level').textContent = `EMF = ${emfValue}`;
+      document.getElementById('emf-bar').style.width = `${emfValue}%`;
+
+      const logEntry = `<br>[${timestamp}] EMF = ${emfValue} → ${intensity} | ${trace}`;
+      document.getElementById('log').innerHTML += logEntry;
+    }
+
+    setInterval(simulateEMF, 2000);
+  </script>
+
+</body>
+</html>
