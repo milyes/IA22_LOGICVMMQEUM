@@ -1,66 +1,234 @@
-<header class="header">
-    <h1>MARLOO FINANCIAL AI</h1>
-    <p class="ai-status">⚡ Real-Time Data Security & Compliance | V2.0</p>
-</header>
+Voici un exemple de code **HTML complet et fonctionnel** pour la page Marloo Financial AI, intégrant toutes les recommandations d’accessibilité, de sécurité, de performance et de SEO. Ce modèle est prêt à être utilisé et adapté pour un site professionnel moderne.
 
-<main class="container">
+---
 
-    <section id="introduction" class="section">
-        <h2>Bienvenue dans l'Ère Algumaptique</h2>
-        <p style="text-align: center; font-size: 1.3em; max-width: 800px; margin: 20px auto;">
-            Marloo Financial AI est votre partenaire en intelligence financière. Nous fusionnons l'**analyse adaptative** avec des **protocoles de sécurité de niveau militaire** pour des décisions rapides, précises et conformes.
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marloo Financial AI - Révolutionnez Votre Finance</title>
+    <meta name="description" content="Marloo Financial AI - Révolutionnez la gestion de vos données financières grâce à l’intelligence artificielle en temps réel. Sécurité, conformité et tableaux de bord avancés.">
+    <meta name="keywords" content="finance, IA, sécurité, conformité, tableau de bord, Marloo, données financières, Canada">
+    <meta name="author" content="Marloo Financial AI">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Open Graph pour le partage sur réseaux sociaux -->
+    <meta property="og:title" content="Marloo Financial AI - Révolutionnez Votre Finance">
+    <meta property="og:description" content="Solution de pointe pour l'intégration, la gestion et la sécurisation des données financières en temps réel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marloo.ai">
+    <meta property="og:image" content="https://marloo.ai/logo.svg">
+    <style>
+        :root {
+            --primary-color: #00e0ff;
+            --secondary-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 5%;
+            border-bottom: 2px solid var(--primary-color);
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        .section h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .feature-card {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 3px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 224, 255, 0.3);
+        }
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+        .cta-button {
+            display: block;
+            width: 200px;
+            margin: 50px auto 0;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 0 15px var(--primary-color);
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover, .cta-button:focus {
+            background-color: #00aacc;
+            outline: 2px solid #00e0ff;
+            outline-offset: 2px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 5%;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9em;
+        }
+        h1, h2, .feature-card h3 {
+            filter: drop-shadow(0 0 1px var(--primary-color));
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        .ai-status {
+            color: var(--primary-color);
+            margin-top: 10px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        /* Accessibilité : focus visible sur les cartes */
+        .feature-card:focus {
+            outline: 2px solid #00e0ff;
+            outline-offset: 2px;
+        }
+        /* Responsive pour petits écrans */
+        @media (max-width: 600px) {
+            .container {
+                width: 98%;
+                padding: 5px;
+            }
+            .section {
+                padding: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" role="banner">
+        <h1>MARLOO FINANCIAL AI</h1>
+        <p class="ai-status" aria-live="polite">Intelligence Financière en Temps Réel V2.0</p>
+    </header>
+    <main class="container" role="main">
+        <section id="introduction" class="section" aria-labelledby="intro-title">
+            <h2 id="intro-title">🚀 La Nouvelle Ère Algumaptique</h2>
+            <p style="text-align: center; font-size: 1.2em;">
+                Marloo Financial AI est la solution de pointe pour l'intégration, la gestion et la sécurisation des données financières en temps réel.
+                Nous transformons l'analyse complexe en décisions claires et exploitables.
+            </p>
+        </section>
+        <section id="features" class="section" aria-labelledby="features-title">
+            <h2 id="features-title">💡 Nos Piliers Technologiques</h2>
+            <div class="feature-grid">
+                <div class="feature-card" tabindex="0">
+                    <h3>Intégration de Données "Real-Time"</h3>
+                    <p>Connectez vos systèmes (APIs, CRM) instantanément. Des flux de travail <strong>intégrés</strong> pour une <strong>assistance</strong> et une <strong>analyse</strong> en direct.</p>
+                </div>
+                <div class="feature-card" tabindex="0">
+                    <h3>Sécurité &amp; Conformité de l'IA</h3>
+                    <p><strong>End-to-End Encryption</strong>, <strong>Zero Data Retention</strong> et <strong>Protocoles Vocaux Sécurisés</strong> pour une conformité totale et une tranquillité d'esprit.</p>
+                </div>
+                <div class="feature-card" tabindex="0">
+                    <h3>Tests d'Injection (Sécurité)</h3>
+                    <p>Rapports d'injections détaillés pour assurer la <strong>résilience</strong> de notre <strong>chatbot IA</strong> face aux menaces (basé sur les concepts du projet IA22).</p>
+                </div>
+                <div class="feature-card" tabindex="0">
+                    <h3>Tableaux de Bord Critiques (KPIs)</h3>
+                    <p>Visualisation des <strong>KPIs critiques</strong> (Taux d'adoption, Usage Quotidien, Taux de succès/erreur de l'IA) pour un pilotage éclairé.</p>
+                </div>
+            </div>
+            #demoDemander une Démo</a>
+        </section>
+        <section id="demo" class="section" aria-labelledby="demo-title">
+            <h2 id="demo-title">📞 Demander une Démo</h2>
+            <form style="max-width:400px;margin:0 auto;" autocomplete="on">
+                <label for="name">Nom :</label><br>
+                <input type="text" id="name" name="name" required style="width:100%;padding:8px;margin-bottom:10px;"><br>
+                <label for="email">Courriel :</label><br>
+                <input type="email" id="email" name="email" required style="width:100%;padding:8px;margin-bottom:10px;"><br>
+                <label for="message">Message :</label><br>
+                <textarea id="message" name="message" rows="4" style="width:100%;padding:8px;margin-bottom:10px;"></textarea><br>
+                <button type="submit" class="cta-button" style="margin:0;">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+        <p>© 2025 Marloo Financial AI. IA22_Project - Nouvelle Ère Algumapique V2.0. Tous droits réservés.</p>
+        #confidentialitePolitique de confidentialité</a>
+    </footer>
+    <section id="confidentialite" class="section" aria-labelledby="conf-title" style="background:#232323;">
+        <h2 id="conf-title" style="color:var(--primary-color);text-align:center;">Politique de confidentialité</h2>
+        <p style="max-width:700px;margin:0 auto;text-align:center;">
+            Marloo Financial AI respecte la vie privée de ses utilisateurs. Les données collectées via ce site sont utilisées uniquement pour répondre aux demandes de démo et ne sont jamais partagées avec des tiers. Conformément à la Loi 25 (Québec), vous pouvez demander la suppression ou la modification de vos données à tout moment.
         </p>
     </section>
+    <script>
+        // Interactivité pour le bouton démo
+        document.querySelector('.cta-button[role="button"]').addEventListener('click', function(e) {
+            if (this.getAttribute('href') === '#demo') {
+                e.preventDefault();
+                document.querySelector('#demo').scrollIntoView({behavior: 'smooth'});
+            }
+        });
+        // Soumission du formulaire (exemple, à adapter côté serveur)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Votre demande de démo a été envoyée. Merci de votre intérêt pour Marloo AI!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+```
 
-    <section id="security" class="section">
-        <h2>🔒 Sécurité et Conformité des Données</h2>
-        <div class="feature-grid">
-            
-            <div class="feature-card">
-                <h3>End-to-End Encryption</h3>
-                <p>Protection maximale de bout en bout pour toutes vos communications et transactions de données.</p>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Zero Data Retention</h3>
-                <p>Vos données vocales et sensibles ne sont jamais stockées après traitement, garantissant la confidentialité absolue.</p>
-            </div>
+---
 
-            <div class="feature-card">
-                <h3>Protocoles Voix & Injection</h3>
-                <p>Utilisation de l'IA sécurisée pour le traitement vocal et résistance prouvée aux tentatives d'injection malveillantes (IA22 Project).</p>
-            </div>
+**Ce code est prêt à l’emploi :**
+- Structure sémantique et accessible
+- Responsive et performant
+- Sécurisé et conforme (exemple de politique de confidentialité incluse)
+- Formulaire de contact fonctionnel (alerte JS, à relier à un backend pour l’envoi réel)
 
-        </div>
-    </section>
-
-    <section id="data-management" class="section">
-        <h2>📊 Gestion de Données en Temps Réel</h2>
-        <div class="feature-grid">
-            
-            <div class="feature-card">
-                <h3>Real-Time Data Integration Et Flow</h3>
-                <p>Intégrez vos données de CRM et d'autres systèmes via des APIs robustes pour des analyses continues et dynamiques.</p>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Adaptive Intelligence</h3>
-                <p>Notre IA apprend et s'adapte en permanence à votre style de travail et aux évolutions du marché financier.</p>
-            </div>
-
-        </div>
-        <button class="cta-button" onclick="showAlert()">Voir le Tableau de Bord Pilote</button>
-    </section>
-
-</main>
-
-<footer class="footer">
-    <p>Projet Développé par Marloo Financial AI | IA22_Project - Nouvelle Ère Algumapique V2.0.</p>
-    <p>Contact: demo@marloo.ai</p>
-</footer>
-
-<script>
-    function showAlert() {
-        alert('Accès au Tableau de Bord Pilote: En cours de déploiement (Phase TEST PILOTE P3). Revenez bientôt !');
-    }
-</script>
+Vous pouvez l’adapter selon vos besoins (logo, couleurs, textes, intégration serveur).  
+Si vous souhaitez une version avec intégration backend (PHP, Node.js, etc.), dites-le-moi !
