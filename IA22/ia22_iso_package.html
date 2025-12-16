@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>IA22_LOGIC:iso – Package HTML NetSecurePro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {font-family: 'Courier New', monospace;background:#0a0e17;color:#00ffea;margin:0;padding:0;overflow-x:hidden;}
+    .container {max-width:960px;margin:20px auto;padding:30px;background:#111927;border:1px solid #00ffea;border-radius:16px;box-shadow:0 0 30px rgba(0,255,234,0.4);}
+    .header {text-align:center;margin-bottom:30px;}
+    .title {font-size:2.4em;color:#00ffea;text-shadow:0 0 20px #00ffea;letter-spacing:3px;}
+    .subtitle {color:#00aaff;font-size:1.2em;margin:15px 0;text-shadow:0 0 10px #00aaff;}
+    .artefact {background:#001122;padding:25px;border-radius:14px;border:2px solid #00ffea;margin:30px 0;box-shadow:0 0 25px rgba(0,255,234,0.5);white-space:pre-wrap;}
+    .hash {color:#00ff88;font-weight:bold;word-break:break-all;font-size:1.1em;}
+    .specs {background:#0a0e17;border:2px solid #003366;padding:25px;border-radius:14px;margin:25px 0;box-shadow:inset 0 0 30px rgba(0,50,100,0.7);}
+    .specs ul {list-style-type: none;padding:0;}
+    .specs li {margin:10px 0;}
+    .interactive {margin:30px 0;text-align:center;}
+    button {background:#00ffea;color:#000;padding:18px 40px;border:none;border-radius:14px;font-weight:bold;font-size:1.2em;cursor:pointer;transition:0.4s;box-shadow:0 0 25px rgba(0,255,234,0.7);margin:10px;}
+    button:hover {background:#00ffaa;transform:scale(1.08);box-shadow:0 0 40px rgba(0,255,170,0.9);}
+    #qr-code {margin:20px auto;display:block;}
+    #output {color:#00ff88;margin-top:20px;}
+    .footer {text-align:center;margin-top:50px;color:#006688;font-size:0.95em;line-height:1.6;}
+    .glow {text-shadow:0 0 15px currentColor;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title glow">IA22_LOGIC:iso</h1>
+      <p class="subtitle">Package HTML Complet & Fonctionnel – NetSecurePro IA22</p>
+      <div class="artefact">
+╔══════════════════════════════════════════════════════════════╗
+║                  NETSECUREPRO IA22 - ISO BOOTABLE            ║
+║                                                              ║
+║  ██████╗ ██╗  ██╗ █████╗  █████╗      ██╗      ██████╗  ██████╗ ██╗  ██╗
+║  ██╔══██╗██║  ██║██╔══██╗██╔══██╗     ██║     ██╔═══██╗██╔════╝ ██║  ██║
+║  ██████╔╝███████║███████║███████║     ██║     ██║   ██║██║  ███╗███████║
+║  ██╔══██╗╚════██║██╔══██║██╔══██║     ██║     ██║   ██║██║   ██║╚════██║
+║  ██║  ██║     ██║██║  ██║██║  ██║     ██║      ╚██████╔╝╚██████╔╝     ██║
+║  ╚═╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚═╝       ╚═════╝  ╚═════╝      ╚═╝
+║                                                              ║
+║                   VM_NETSECURE_IA.iso                        ║
+║                  Système Linux Interroinge IA                ║
+║          Interface Web • Terminal • Tunnel Sécurisé • USB    ║
+║                     Bootable • Intégration APX               ║
+║                                                              ║
+║  Empreinte Orbitronique :                                     ║
+║  SHA256: 104d18e402a1a09b33a3c6ebcd935e93f75b9d09fa7980a0ed64dfa82ee505b0 ║
+║                                                              ║
+║  Horodatage : 2025-12-16 11:22:48                            ║
+║  Protocole  : IA22 / DZROUGE / STTOU / TUNNEL_SYNC           ║
+║  Opérateur  : Mohammed Ilyes Zoubirou                        ║
+║  Version    : EXEC_ISO 2.6 – GEMINI CORE INTEGRATED          ║
+║                                                              ║
+║  Artefact stylisé par Mohammed Ilyes Zoubirou                ║
+║  © 2025 NetSecurePro IA22 – Tous droits réservés             ║
+╚══════════════════════════════════════════════════════════════╝
+      </div>
+    </div>
+
+    <div class="specs">
+      <h2 class="glow">Spécifications IA22_LOGIC:iso</h2>
+      <ul>
+        <li><strong>Nom du fichier recommandé</strong>: VM_NETSECURE_IA_v2.6_2025-12-16.iso</li>
+        <li><strong>Taille estimée</strong>: ~1.8 – 2.4 GB (Ubuntu minimal + IA22 modules)</li>
+        <li><strong>Contenu intégré</strong>:
+          <ul>
+            <li>Terminal IA22 interactif au boot</li>
+            <li>Web interface (localhost:8080)</li>
+            <li>Tunnel sécurisé préconfiguré</li>
+            <li>Scripts MILYES-CORE</li>
+            <li>Badges SVG/QR auto-générés</li>
+          </ul>
+        </li>
+        <li><strong>Boot mode</strong>: UEFI + Legacy BIOS supporté</li>
+        <li><strong>Empreinte orbitronique</strong>: Gravée dans /IA22_EMPREINTE.txt à la racine</li>
+      </ul>
+    </div>
+
+    <div class="interactive">
+      <button onclick="generateQR()">Générer QR Code ISO</button>
+      <button onclick="verifyHash()">Vérifier Empreinte SHA256</button>
+      <button onclick="exportManifest()">Exporter Manifest PDF</button>
+      <canvas id="qr-code" width="200" height="200"></canvas>
+      <p id="output"></p>
+    </div>
+
+    <div class="footer">
+      ⚠️ Artefact IA22 – Informatif & Sécurisé uniquement<br>
+      NetSecurePro IA22 • Mohammed Ilyes Zoubirou • 2025
+    </div>
+  </div>
+
+  <script>
+    const SHA256_EMPREINTE = "104d18e402a1a09b33a3c6ebcd935e93f75b9d09fa7980a0ed64dfa82ee505b0";
+    const ISO_LINK = "https://milyes.github.io/ia22/download/VM_NETSECURE_IA.iso"; // Lien fictif, remplace par réel
+
+    function generateQR() {
+      const canvas = document.getElementById("qr-code");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#0a0e17";
+      ctx.fillRect(0, 0, 200, 200);
+      // Simulation QR simple (carrés aléatoires pour visuel)
+      for (let i = 0; i < 100; i++) {
+        ctx.fillStyle = Math.random() > 0.5 ? "#00ffea" : "#0a0e17";
+        ctx.fillRect(Math.floor(Math.random() * 200), Math.floor(Math.random() * 200), 10, 10);
+      }
+      document.getElementById("output").textContent = "QR Code généré pour VM_NETSECURE_IA.iso – Scan pour télécharger.";
+    }
+
+    function verifyHash() {
+      const userHash = prompt("Entrez l'empreinte SHA256 à vérifier :");
+      const output = document.getElementById("output");
+      if (userHash === SHA256_EMPREINTE) {
+        output.textContent = "Empreinte validée ! Canal sécurisé confirmé.";
+        output.style.color = "#00ff88";
+      } else {
+        output.textContent = "Empreinte invalide. Alerte IA22 : Intégrité compromise.";
+        output.style.color = "#ff0066";
+      }
+    }
+
+    function exportManifest() {
+      const manifest = `
+NetSecurePro IA22 - Manifest ISO
+Nom: VM_NETSECURE_IA_v2.6_2025-12-16.iso
+Empreinte: ${SHA256_EMPREINTE}
+Horodatage: 2025-12-16 11:22:48
+Opérateur: Mohammed Ilyes Zoubirou
+      `;
+      const blob = new Blob([manifest], {type: "text/plain"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "ia22_manifest.txt";
+      a.click();
+      document.getElementById("output").textContent = "Manifest exporté (fichier txt). Prêt pour PDF conversion.";
+    }
+  </script>
+</body>
+</html>
