@@ -1,0 +1,84 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSecurePro - Interface de Commande Aviation</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0a0a0a;
+            color: #00ff41;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .terminal {
+            background-color: #1a1a1a;
+            border: 2px solid #00ff41;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            width: 80%;
+            max-width: 600px;
+        }
+        .header {
+            border-bottom: 1px solid #00ff41;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #333;
+        }
+        th {
+            color: #ffffff;
+            background-color: #333;
+        }
+        .status-active {
+            color: #ff3e3e;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div class="terminal">
+    <div class="header">
+        <strong>SYSTEM: NetSecurePro RAG (LlamaIndex/ChromaDB)</strong><br>
+        <span>STATUS: Flight security protocol active.</span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Entité</th>
+                <th>Commande / État</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>IA</td>
+                <td>EXECUTE_SECURITY_PROTOCOL</td>
+            </tr>
+            <tr>
+                <td>IA22</td>
+                <td>MONITOR_FLIGHT_STATUS</td>
+            </tr>
+            <tr>
+                <td>Request</td>
+                <td class="status-active">Flight security protocol active</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+
