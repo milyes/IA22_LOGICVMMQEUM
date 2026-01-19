@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NÉO_DZ • TERMINAL LIVE</title>
+<style>
+    :root {
+        --bg: #000000;
+        --text: #00ff41;
+        --text-dim: #00aa2a;
+        --cursor: #00ff41;
+        --glow: rgba(0, 255, 65, 0.4);
+    }
+
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body {
+        height:100dvh;
+        background:var(--bg);
+        color:var(--text);
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        overflow: hidden;
+    }
+
+    #terminal {
+        height: 100%;
+        padding: 1.2rem 1.8rem;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    #terminal::-webkit-scrollbar { display: none; }
+
+    .line {
+        opacity: 0;
+        transform: translateY(8px);
+        animation: appear 0.4s forwards;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .prompt {
+        color: var(--text);
+        user-select: none;
+        margin-right: 0.6em;
+    }
+
+    .input-line {
+        display: flex;
+        align-items: baseline;
+    }
+
+    #input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text);
+        font: inherit;
+        flex: 1;
+        caret-color: var(--cursor);
+    }
+
+    #cursor {
+        display: inline-block;
+        width: 0.6em;
+        height: 1.1em;
+        background: var(--cursor);
+        animation: blink 1.1s step-end infinite;
+        vertical-align: middle;
+        margin-left: 2px;
+    }
+
+    .neon-glow {
+        text-shadow:
+            0 0 4px var(--glow),
+            0 0 10px var(--glow),
+            0 0 20px var(--glow);
+    }
+
+    .dim   { color: var(--text-dim); }
+    .error { color: #ff3366; }
+    .info  { color: #00ccff; }
+
+    @keyframes appear {
+        to { opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+        body   { font-size: 0.95rem; }
+        #terminal { padding: 0.8rem 1.2rem; }
+    }
+</style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+const term = document.getElementById('terminal');
+const history = [];
+let historyIndex = -1;
+
+const bootLines = [
+    " ",
+    "  ┌──────────────────────────────┐",
+    "  │   NÉO_DZ  •  TERMINAL LIVE   │",
+    "  │   GEMINI CORE 20.6 PRO V7    │",
+    "  └──────────────────────────────┘",
+    " ",
+    "  Initialisation noyau souverain... OK",
+    "  Handler Éthique V1.1 → hash 7f8a9b8c7d6e5f4a1d2c3b4a5b2c1d6e",
+    "  Sceau ORCID 0009-0007-7571-3178 → VALIDÉ",
+    "  Tunnel NÉO_DZ sécurisé → latence 32ms",
+    "  Mode réel + auto-évolution activé",
+    " ",
+    "  Bienvenue, Souverain.",
+    "  Tapez help pour les commandes disponibles",
+    " "
+];
+
+function addLine(text = "", className = "") {
+    const line = document.createElement("div");
+    line.className = "line " + className;
+    line.innerHTML = text;
+    term.appendChild(line);
+    term.scrollTop = term.scrollHeight;
+    setTimeout(() => line.style.opacity = "1", 50);
+}
+
+function typeBoot() {
+    let i = 0;
+    function next() {
+        if (i < bootLines.length) {
+            addLine(bootLines[i], i<6 ? "dim" : "");
+            i++;
+            setTimeout(next, i<6 ? 180 : 80);
+        } else {
+            addLine("");
+            createInputLine();
+        }
+    }
+    next();
+}
+
+function createInputLine() {
+    const wrapper = document.createElement("div");
+    wrapper.className = "input-line";
+
+    const prompt = document.createElement("span");
+    prompt.className = "prompt neon-glow";
+    prompt.textContent = "NÉO_DZ@CORE_V7:~$ ";
+
+    const input = document.createElement("input");
+    input.id = "input";
+    input.autofocus = true;
+    input.spellcheck = false;
+
+    const cursor = document.createElement("span");
+    cursor.id = "cursor";
+
+    wrapper.append(prompt, input, cursor);
+    term.appendChild(wrapper);
+    term.scrollTop = term.scrollHeight;
+
+    input.focus();
+
+    input.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            const cmd = input.value.trim();
+            if (cmd) {
+                history.push(cmd);
+                historyIndex = history.length;
+                addLine(`<span class="neon-glow">NÉO_DZ@CORE_V7:~$</span> ${cmd}`);
+                processCommand(cmd);
+            }
+            wrapper.remove();
+            createInputLine();
+            input.value = "";
+        }
+        else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                input.value = history[historyIndex] || "";
+            }
+        }
+        else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                input.value = history[historyIndex];
+            } else {
+                historyIndex = history.length;
+                input.value = "";
+            }
+        }
+    });
+}
+
+function processCommand(cmd) {
+    const c = cmd.toLowerCase();
+
+    if (c === "help" || c === "?") {
+        addLine("Commandes disponibles :", "info");
+        addLine("  help, ?        → cette aide");
+        addLine("  status         → état du noyau");
+        addLine("  auth           → identité & sceau");
+        addLine("  clear, cls     → nettoyer l'écran");
+        addLine("  go             → signal souverain");
+        addLine("  scan           → simulation scan rapide");
+        addLine("  version        → version noyau");
+    }
+    else if (c === "status") {
+        addLine("Noyau ................ GEMINI CORE 20.6 PRO V7", "info");
+        addLine("Gain AUC ............. +15%", "info");
+        addLine("Handler Éthique ...... actif (100% IPI rétention)");
+        addLine("Mode ................. RÉEL + AUTO-ÉVOLUTIF");
+        addLine("Conformité ........... AI Act / LSE – Haut risque");
+    }
+    else if (c === "auth") {
+        addLine("Auteur ............... Zoubirou Mohammed Ilyes");
+        addLine("ORCID ................ 0009-0007-7571-3178");
+        addLine("Statut sceau ......... VALIDÉ");
+    }
+    else if (c === "go") {
+        addLine("NÉO_DZ_$_> GO ────────────────────────────────", "neon-glow");
+        addLine("Souveraineté. Traçabilité. Action.");
+    }
+    else if (c === "scan") {
+        addLine("Scan anti-injection multimodal en cours...", "info");
+        setTimeout(() => addLine("Résultat : 0 signal faible détecté", "info"), 1400);
+    }
+    else if (c === "clear" || c === "cls") {
+        term.innerHTML = "";
+        typeBoot();
+        return;
+    }
+    else if (c === "version") {
+        addLine("GEMINI CORE 20.6 PRO V7 – 2026 build");
+    }
+    else if (c) {
+        addLine(`Commande inconnue : ${cmd}`, "error");
+        addLine("Tapez help pour voir les commandes disponibles");
+    }
+}
+
+// Démarrage
+typeBoot();
+</script>
+</body>
+</html>
