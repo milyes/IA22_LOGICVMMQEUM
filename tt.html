@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NÉO_DZ - Rapport d'Asset Audio</title>
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --border-color: #1a1a1a;
+            --text-gray: #888;
+            --sovereign-gold: #d4af37;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-green);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .terminal-container {
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .header {
+            border-bottom: 1px solid var(--neon-green);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .identity-block {
+            color: var(--sovereign-gold);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .data-item {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            background: #111;
+        }
+
+        .label {
+            color: var(--text-gray);
+            font-size: 0.75em;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .value {
+            font-size: 1em;
+            word-break: break-all;
+        }
+
+        .status-tag {
+            background: var(--neon-green);
+            color: black;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.7em;
+            color: var(--text-gray);
+            text-align: right;
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
